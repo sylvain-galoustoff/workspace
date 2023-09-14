@@ -8,8 +8,8 @@ function Header() {
             <div className="container">
 
                 <div id="app-infos">
-                    <p id="app-name">SG Suite</p>
-                    <h1>Remind.me</h1>
+                    <p id="app-name">WorkSpace</p>
+                    <h1 id="page-name">Remind.me</h1>
                 </div>
 
                 <div className="right-part" id="menus">

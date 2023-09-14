@@ -4,17 +4,17 @@
 }
 
 ::-webkit-scrollbar-track {
-    background: lighten($accent, 10%);
+    background: lighten($grey1, 10%);
     border-radius: $corner;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: $accent;
+    background: $grey1;
     border-radius: $corner;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: darken($accent, 10%);
+    background: $accent;
 }
 
 /* TEXTS */
@@ -82,8 +82,8 @@ textarea {
     font-size: 1rem;
     color: $black;
     padding: $marge $marge*2;
-    background-color: $accent;
-    border: $borderBlack;
+    background-color: $grey1;
+    border: 1px solid $grey1;
     border-radius: $corner;
     @include trans;
 
@@ -91,6 +91,7 @@ textarea {
         outline: none;
         border-color: $accent;
         background-color: $white;
+        @include boxShadow;
     }
 }
 
@@ -103,18 +104,18 @@ a.button {
     font-size: 1rem;
     font-weight: 600;
     color: $black;
-    border: 1px solid $accent;
+    border: 1px solid $grey1;
     border-radius: $corner;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: $marge $marge*2;
-    background-color: $accent;
+    background-color: $grey1;
     cursor: pointer;
     @include trans;
 
     &:hover {
-        background-color: darken($accent, 10%);
+        background-color: darken($grey1, 10%);
     }
 
     &.primary {
@@ -180,7 +181,7 @@ a.button {
 }
 
 #modal-header {
-    background-color: $accent;
+    background-color: $grey1;
     padding: $marge*2;
     border-top-left-radius: $corner;
     border-top-right-radius: $corner;

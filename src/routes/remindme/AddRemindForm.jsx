@@ -4,7 +4,6 @@ import { IoCheckmark } from 'react-icons/io5'
 import DatePicker, { registerLocale } from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
 
-import { format } from 'date-fns'
 import fr from 'date-fns/locale/fr'
 registerLocale('fr', fr)
 
@@ -12,12 +11,15 @@ import storeEvent from "../../usecases/storeEvent";
 import getAllCalendarNames from '../../usecases/getAllCalendarNames'
 import Modal from "../../components/modals/Modal";
 import AddCalendar from "../../components/modals/AddCalendar";
+import { useRecoilState } from "recoil";
+import toastState from '../../stores/toastState'
 
 function AddRemindForm() {
 
     const [startDate, setStartDate] = useState(null)
     const [sendingData, setSendingData] = useState(false)
     const [calendars, setCalendars] = useState()
+    const [toasts, setToasts] = useRecoilState(toastState)
     const [form, setForm] = useState({
         id: null,
         name: '',
@@ -49,6 +51,12 @@ function AddRemindForm() {
         e.preventDefault()
         setSendingData(true)
 
+        const inProgressToast = {
+            type: "primary",
+            message: "enregistrement du nouvel événement ..."
+        }
+        setToasts([...toasts, inProgressToast])
+
         const newForm = { ...form }
         newForm.timestamp = startDate.getTime()
 
@@ -63,6 +71,12 @@ function AddRemindForm() {
                 })
                 setSendingData(false)
                 setStartDate(null)
+                const successToast = {
+                    type: "success",
+                    message: "événement enregistré !"
+                }
+                setToasts([...toasts, inProgressToast, successToast])
+
             })
             .catch(err => console.error(err))
 

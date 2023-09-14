@@ -1,12 +1,12 @@
-$black : #10302a;
-$white: #E3EAE7;
-$accent: #B9CDCA;
-$primary: #7694E1;
-$success: #39BF57;
+$black : #494949;
+$white: #ECECEC;
+$grey1: #DADADA;
+$accent: #DE814D;
+$primary: #5F7CC6;
+$success: #29AE47;
 $danger: #D05C54;
 
-$corner: 4px;
-$borderBlack: 1px solid rgba($black, .1);
+$corner: 2px;
 $marge: 8px;
 
 $fontFamily: 'Nunito', sans-serif;
@@ -30,10 +30,15 @@ $fontFamily: 'Nunito', sans-serif;
     border: $width solid $color;
 }
 
-@mixin card($bg: $accent) {
+@mixin boxShadow {
+    box-shadow: 1px 1px 1px rgba($black, .25);
+}
+
+@mixin card($bg: $grey1) {
+    @include boxShadow();
     background-color: $bg;
     border-radius: $corner;
-    border: $borderBlack;
+    border: 1px solid $accent;
 }
 
 @mixin trans($time: .2s) {

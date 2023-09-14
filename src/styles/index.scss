@@ -9,7 +9,7 @@
 }
 
 html {
-	font-size: 18px
+	font-size: 16px
 }
 
 body {
@@ -36,7 +36,7 @@ body,
 
 /* HEADER */
 #app-header {
-	background-color: $accent;
+	background-color: $grey1;
 	height: 95px;
 
 	.container {
@@ -46,6 +46,10 @@ body,
 		padding-bottom: $marge*2;
 	}
 
+}
+
+#page-name {
+	color: $accent;
 }
 
 #app-name {
@@ -74,6 +78,10 @@ body,
 		&.active,
 		&:hover {
 			opacity: 1;
+		}
+
+		&.active {
+			color: $accent;
 		}
 	}
 }
@@ -108,25 +116,29 @@ body,
 
 .toast {
 	margin-top: $marge*2;
-	background-color: $primary;
-	color: $white;
+	background-color: $grey1;
+	border: 1px solid $primary;
+	border-left: 10px solid $primary;
+	color: $black;
 
 	&.success {
-		background-color: $success;
+		border: 1px solid $success;
+		border-left: 10px solid $success;
 	}
 
 	&.danger {
-		background-color: $danger;
+		border: 1px solid $danger;
+		border-left: 10px solid $danger;
 	}
 }
 
 .toast-header {
 	@include h3;
-	padding: $marge;
+	padding: $marge*2 $marge*2 $marge $marge*2;
 }
 
 .toast-body {
-	padding: 0 $marge $marge $marge;
+	padding: 0 $marge*2 $marge*2 $marge*2;
 }
 
 /* REMIND.ME */
@@ -247,13 +259,13 @@ body,
 }
 
 .react-datepicker__header {
-	background-color: $accent;
+	background-color: $grey1;
 }
 
 .react-datepicker__day:hover {
-	background-color: lighten($accent, 15%);
+	background-color: lighten($grey1, 15%);
 }
 
 .react-datepicker__day--keyboard-selected {
-	background-color: $accent;
+	background-color: $grey1;
 }
