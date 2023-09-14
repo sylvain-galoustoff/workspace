@@ -1,0 +1,29 @@
+import { doc, setDoc } from 'firebase/firestore'
+import { db } from '../firebase'
+
+const storeEvent = async event => {
+
+    console.clear()
+
+    console.log('From storeEvent.js')
+    console.log(event)
+
+    const eventDateAndTime = new Date(event.timestamp)
+    console.log(eventDateAndTime)
+    const eventDate = eventDateAndTime.setHours(0, 0, 0, 0) //timestamp
+    console.log(new Date(eventDate))
+
+    const eventId = new Date().getTime()
+    event.id = eventId
+
+
+    const eventForDb = {
+        [eventId]: event
+    }
+
+    const ref = doc(db, 'events', eventDate.toString())
+    await setDoc(ref, eventForDb, { merge: true })
+
+}
+
+export default storeEvent

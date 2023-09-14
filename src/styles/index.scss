@@ -1,0 +1,259 @@
+@import "reset.scss";
+@import "vars.scss";
+@import "framework.scss";
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 18px
+}
+
+body {
+	font-family: $fontFamily;
+	color: $black;
+	background-color: $white;
+}
+
+html,
+body,
+#root,
+#app,
+.page {
+	height: 100%;
+	overflow: hidden;
+}
+
+.page {
+	.container {
+		// @include dev;
+		height: calc(100% - 95px);
+	}
+}
+
+/* HEADER */
+#app-header {
+	background-color: $accent;
+	height: 95px;
+
+	.container {
+		height: 100%;
+		display: flex;
+		align-items: flex-end;
+		padding-bottom: $marge*2;
+	}
+
+}
+
+#app-name {
+	@include h2;
+}
+
+#menus {
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+#app-menu {
+	display: flex;
+}
+
+.menu-item {
+	margin-right: $marge*2;
+	@include h3;
+
+	a {
+		opacity: .5;
+		@include trans;
+
+		&.active,
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+
+#external-links {
+	margin-left: $marge*5;
+
+	a {
+		margin-left: $marge*2;
+		opacity: .5;
+		@include trans;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+}
+
+/* TOASTS */
+#toaster {
+	position: fixed;
+	// @include dev;
+	height: calc(100% - 95px);
+	width: 300px;
+	top: 95px;
+	right: 0;
+	padding: $marge*2 $marge*2 $marge*2 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.toast {
+	margin-top: $marge*2;
+	background-color: $primary;
+	color: $white;
+
+	&.success {
+		background-color: $success;
+	}
+
+	&.danger {
+		background-color: $danger;
+	}
+}
+
+.toast-header {
+	@include h3;
+	padding: $marge;
+}
+
+.toast-body {
+	padding: 0 $marge $marge $marge;
+}
+
+/* REMIND.ME */
+#remind-me {
+	.container {
+		// @include dev;
+		padding-top: $marge*5;
+		display: flex;
+	}
+}
+
+#reminders-list {
+	flex: 1;
+	height: 100%;
+	overflow-y: auto;
+	padding-right: $marge*2;
+	margin-right: $marge*10;
+}
+
+.events-list {
+	border-top: 1px solid $accent;
+	padding-top: $marge*2;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.date {
+	position: absolute;
+	top: $marge*2;
+	left: 0;
+}
+
+.event {
+	margin-bottom: $marge*2;
+	position: relative;
+	width: 50%;
+}
+
+.event-header {
+	padding: $marge*2;
+	padding-bottom: 0;
+	display: flex;
+	justify-content: space-between;
+}
+
+.event-name {
+	@include h3;
+
+	&:first-letter {
+		text-transform: uppercase;
+	}
+}
+
+.event-time {
+	opacity: .75;
+}
+
+.event-calendar {
+	padding: $marge*2;
+	padding-top: 0;
+	opacity: .75;
+}
+
+.event-notes {
+	padding: $marge*2;
+	padding-top: 0;
+}
+
+.event-actions {
+	position: absolute;
+	bottom: $marge*2;
+	right: $marge*2;
+	display: flex;
+}
+
+.event-edit,
+.event-delete {
+	opacity: .75;
+	cursor: pointer;
+	@include trans;
+
+	&:hover {
+		opacity: 1;
+		transform: scale(1.1);
+	}
+}
+
+.event-delete {
+	margin-left: $marge;
+}
+
+#add-reminder {
+	// @include dev;
+	padding: $marge*2 0 0 0;
+	opacity: 1;
+	@include trans;
+
+	&.is-focus {
+		opacity: 1;
+	}
+
+}
+
+#add-reminder-title {
+	margin-bottom: $marge*3;
+}
+
+.react-datepicker {
+	font-family: $fontFamily !important;
+	color: $black !important;
+}
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container {
+	width: 100%;
+}
+
+.react-datepicker__header {
+	background-color: $accent;
+}
+
+.react-datepicker__day:hover {
+	background-color: lighten($accent, 15%);
+}
+
+.react-datepicker__day--keyboard-selected {
+	background-color: $accent;
+}

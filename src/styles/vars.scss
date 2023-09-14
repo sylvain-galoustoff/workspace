@@ -1,0 +1,41 @@
+$black : #10302a;
+$white: #E3EAE7;
+$accent: #B9CDCA;
+$primary: #7694E1;
+$success: #39BF57;
+$danger: #D05C54;
+
+$corner: 4px;
+$borderBlack: 1px solid rgba($black, .1);
+$marge: 8px;
+
+$fontFamily: 'Nunito', sans-serif;
+
+@mixin h1 {
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+@mixin h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+@mixin h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+@mixin dev($color: red, $width: 1px) {
+    border: $width solid $color;
+}
+
+@mixin card($bg: $accent) {
+    background-color: $bg;
+    border-radius: $corner;
+    border: $borderBlack;
+}
+
+@mixin trans($time: .2s) {
+    transition: all $time linear;
+}
