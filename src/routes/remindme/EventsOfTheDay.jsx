@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from 'framer-motion'
 
 import { getFullDateStringFromTimestamp } from "../../helpers/formatDates";
 
@@ -14,13 +15,18 @@ function EventsOfTheDay({ events }) {
     }, [events])
 
     const renderEvents = Object.keys(events)
-        .map(key => <EventCard key={key} event={events[key]} />)
+        .map(key => <EventCard key={key} event={events[key]} animationDelay={key} />)
 
     return (
-        <div className="events-list">
+        <motion.div
+            className="events-list"
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ type: "tween", duration: .5, ease: 'backIn', when: 'beforeChildren' }}
+        >
             <h3 className="date">{timestamp && getFullDateStringFromTimestamp(timestamp)}</h3>
             {renderEvents}
-        </div>
+        </motion.div>
     );
 }
 

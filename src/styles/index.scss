@@ -171,6 +171,10 @@ body,
 	position: absolute;
 	top: $marge*2;
 	left: 0;
+
+	&::first-letter {
+		text-transform: uppercase;
+	}
 }
 
 .event {

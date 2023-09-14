@@ -8,6 +8,7 @@ const storeEvent = async event => {
 
     const eventId = new Date().getTime()
     event.id = eventId
+    event.timestampNoTime = eventDate
 
     const eventForDb = {
         [eventId]: event
