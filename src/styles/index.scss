@@ -120,6 +120,9 @@ body,
 	border: 1px solid $primary;
 	border-left: 10px solid $primary;
 	color: $black;
+	padding: $marge*2;
+	animation: fadetoast 1s linear 10s forwards;
+	@include trans;
 
 	&.success {
 		border: 1px solid $success;
@@ -132,13 +135,14 @@ body,
 	}
 }
 
-.toast-header {
-	@include h3;
-	padding: $marge*2 $marge*2 $marge $marge*2;
-}
+@keyframes fadetoast {
+	from {
+		opacity: 1;
+	}
 
-.toast-body {
-	padding: 0 $marge*2 $marge*2 $marge*2;
+	to {
+		opacity: 0;
+	}
 }
 
 /* REMIND.ME */
