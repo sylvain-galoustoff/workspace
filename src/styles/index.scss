@@ -9,7 +9,7 @@
 }
 
 html {
-	font-size: 16px
+	font-size: 14px
 }
 
 body {
@@ -30,7 +30,7 @@ body,
 .page {
 	.container {
 		// @include dev;
-		height: calc(100% - 95px);
+		height: calc(100% - 95px - 70px);
 	}
 }
 
@@ -97,6 +97,32 @@ body,
 		&:hover {
 			opacity: 1;
 		}
+	}
+}
+
+/* TOOLBAR */
+#toolbar {
+	height: 70px;
+	background-color: $grey2;
+
+	.container {
+		height: 100%;
+		display: flex;
+		align-items: center;
+	}
+
+	.form-group {
+		height: 100%;
+		margin-bottom: 0;
+		margin-right: $marge*2;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	[type="text"] {
+		background-color: $white;
+		border-color: $accent;
 	}
 }
 
@@ -194,12 +220,10 @@ body,
 }
 
 /* REMIND.ME */
-#remind-me {
-	.container {
-		// @include dev;
-		padding-top: $marge*5;
-		display: flex;
-	}
+#remind-me-container {
+	// @include dev;
+	padding-top: $marge*5;
+	display: flex;
 }
 
 #reminders-list {

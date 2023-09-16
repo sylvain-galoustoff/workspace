@@ -23,7 +23,7 @@ function EventsOfTheDay({ events, motionKey }) {
             key={motionKey}
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ type: "tween", duration: .5, ease: 'backIn', when: 'beforeChildren' }}
+            transition={{ type: "tween", duration: .5, ease: 'backIn', when: 'beforeChildren', delay: motionKey / 10 }}
         >
             <h3 className="date">{timestamp && getFullDateStringFromTimestamp(timestamp)}</h3>
             {renderEvents}

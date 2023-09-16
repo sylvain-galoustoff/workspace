@@ -1,6 +1,7 @@
 $black : #494949;
 $white: #ECECEC;
 $grey1: #DADADA;
+$grey2: #E1E1E1;
 $accent: #DE814D;
 $primary: #5F7CC6;
 $success: #29AE47;
@@ -30,8 +31,8 @@ $fontFamily: 'Nunito', sans-serif;
     border: $width solid $color;
 }
 
-@mixin boxShadow {
-    box-shadow: 1px 1px 1px rgba($black, .25);
+@mixin boxShadow($x: 1px, $y: 1px, $blur: 1px, $color: rgba($black, .25)) {
+    box-shadow: $x $y $blur $color;
 }
 
 @mixin card($bg: $grey1) {
