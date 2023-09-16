@@ -1,5 +1,5 @@
 import { db } from '../firebase'
-import { deleteField, doc, setDoc } from "firebase/firestore";
+import { deleteDoc, deleteField, doc, getDoc, setDoc } from "firebase/firestore";
 
 const deleteEvent = async (timestampNoTime, eventId) => {
 
@@ -8,6 +8,12 @@ const deleteEvent = async (timestampNoTime, eventId) => {
     update[eventId] = deleteField()
 
     await setDoc(docRef, update, { merge: true })
+    const newDoc = await getDoc(docRef)
+
+    if (Object.keys(newDoc.data()).length === 0) {
+        await deleteDoc(docRef)
+    }
+
 
 }
 

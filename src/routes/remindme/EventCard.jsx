@@ -3,15 +3,16 @@ import { motion } from 'framer-motion';
 
 import { getTimeFromTimestamp } from '../../helpers/formatDates';
 import deleteEvent from '../../usecases/deleteEvent'
-import { useRecoilState } from 'recoil';
-import toastState from '../../stores/toastState'
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import toastState from '../../atoms/toastState'
+import editEventState from '../../atoms/editEventState';
 
 function EventCard({ event, animationDelay }) {
 
     const [toasts, setToasts] = useRecoilState(toastState)
+    const setEditEvent = useSetRecoilState(editEventState)
 
     const deleteThisEvent = () => {
-
         const inProgressToast = {
             type: "primary",
             message: "Suppression de l'événement..."
@@ -26,6 +27,10 @@ function EventCard({ event, animationDelay }) {
                 }
                 setToasts([...toasts, inProgressToast, successToast])
             })
+    }
+
+    const editEvent = () => {
+        setEditEvent(event)
     }
 
     return (
@@ -46,7 +51,7 @@ function EventCard({ event, animationDelay }) {
             <div className="event-notes">{event?.note}</div>
 
             <div className="event-actions">
-                <div className="event-edit">
+                <div className="event-edit" onClick={editEvent}>
                     <IoPencil />
                 </div>
                 <div className="event-delete" onClick={deleteThisEvent}>

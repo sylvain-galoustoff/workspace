@@ -100,9 +100,57 @@ body,
 	}
 }
 
+/* LOADER */
+#loader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding-top: $marge*2;
+}
+
+
+#animated-loader {
+	display: flex;
+	justify-content: center;
+	margin-bottom: $marge;
+
+	.loader-item:nth-child(2) {
+		animation-delay: 200ms;
+	}
+
+	.loader-item:nth-child(3) {
+		animation-delay: 400ms;
+	}
+}
+
+.loader-item {
+	height: 20px;
+	width: 20px;
+	border-radius: $corner;
+	margin: 0 2px;
+	background-color: $grey1;
+	animation: loader 600ms infinite ease-in-out alternate;
+}
+
+@keyframes loader {
+	from {
+		background-color: $accent;
+	}
+
+	to {
+		background-color: $grey1;
+	}
+}
+
+#loader-text {
+	text-align: center;
+}
+
 /* TOASTS */
 #toaster {
 	position: fixed;
+	z-index: 1000;
 	// @include dev;
 	height: calc(100% - 95px);
 	width: 300px;
@@ -160,6 +208,7 @@ body,
 	overflow-y: auto;
 	padding-right: $marge*2;
 	margin-right: $marge*10;
+	position: relative;
 }
 
 .events-list {
@@ -207,8 +256,7 @@ body,
 }
 
 .event-calendar {
-	padding: $marge*2;
-	padding-top: 0;
+	padding: $marge $marge*2 $marge*2 $marge*2;
 	opacity: .75;
 }
 

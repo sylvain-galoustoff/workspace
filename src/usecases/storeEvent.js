@@ -14,8 +14,8 @@ const storeEvent = async event => {
         [eventId]: event
     }
 
-    const ref = doc(db, 'events', eventDate.toString())
-    await setDoc(ref, eventForDb, { merge: true })
+    const docRef = doc(db, 'events', eventDate.toString())
+    await setDoc(docRef, eventForDb, { merge: true })
 
 }
 

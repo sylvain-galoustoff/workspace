@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
-import { IoClose, IoCheckmark } from 'react-icons/io5'
+import { IoClose, IoSave } from 'react-icons/io5'
 import storeCalendar from '../../usecases/storeCalendar';
+import { useRecoilState } from 'recoil';
+import ToastState from '../../atoms/toastState'
 
 function AddCalendar({ closeModal, selectNewCalendar }) {
 
     const input = useRef()
     const [newCalendar, setNewCalendar] = useState('')
+    const [toasts, setToasts] = useRecoilState(ToastState)
 
     useEffect(() => {
         input.current.focus()
@@ -16,8 +19,22 @@ function AddCalendar({ closeModal, selectNewCalendar }) {
     }
 
     const saveNewCalendar = () => {
+
+        const isSavingToast = {
+            type: "primary",
+            message: "Sauvegarde en cours"
+        }
+        setToasts([...toasts, isSavingToast])
+
         storeCalendar(newCalendar)
-            .then(() => selectNewCalendar(newCalendar))
+            .then(() => {
+                const saveCompleteToast = {
+                    type: "success",
+                    message: `Calendrier "${newCalendar}" sauvegardé`
+                }
+                selectNewCalendar(newCalendar)
+                setToasts([...toasts, isSavingToast, saveCompleteToast])
+            })
     }
 
     return (
@@ -51,7 +68,7 @@ function AddCalendar({ closeModal, selectNewCalendar }) {
                     className="primary icon-left"
                     onClick={saveNewCalendar}
                 >
-                    <IoCheckmark /> Valider
+                    <IoSave /> Enregistrer
                 </button>
 
             </div>

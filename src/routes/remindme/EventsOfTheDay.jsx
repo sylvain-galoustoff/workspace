@@ -5,7 +5,7 @@ import { getFullDateStringFromTimestamp } from "../../helpers/formatDates";
 
 import EventCard from "./EventCard";
 
-function EventsOfTheDay({ events }) {
+function EventsOfTheDay({ events, motionKey }) {
 
     const [timestamp, setTimestamp] = useState('')
 
@@ -20,6 +20,7 @@ function EventsOfTheDay({ events }) {
     return (
         <motion.div
             className="events-list"
+            key={motionKey}
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ type: "tween", duration: .5, ease: 'backIn', when: 'beforeChildren' }}

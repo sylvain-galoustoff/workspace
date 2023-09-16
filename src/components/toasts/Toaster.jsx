@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import { useRecoilState } from "recoil";
-import toastState from "../../stores/toastState";
+import toastState from "../../atoms/toastState";
 
 import Toast from "./Toast";
 
