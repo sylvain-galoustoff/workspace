@@ -30,14 +30,14 @@ body,
 .page {
 	.container {
 		// @include dev;
-		height: calc(100% - 95px - 70px);
+		height: calc(100% - 80px);
 	}
 }
 
 /* HEADER */
 #app-header {
 	background-color: $grey1;
-	height: 95px;
+	height: 80px;
 
 	.container {
 		height: 100%;
@@ -64,11 +64,13 @@ body,
 }
 
 #app-menu {
+	width: 100%;
 	display: flex;
+	justify-content: flex-end;
 }
 
 .menu-item {
-	margin-right: $marge*2;
+	margin-left: $marge*2;
 	@include h3;
 
 	a {
@@ -244,6 +246,23 @@ body,
 	align-items: flex-end;
 }
 
+.event {
+	@include trans;
+
+	svg {
+		@include trans;
+	}
+
+	&.done {
+		border-color: $grey1;
+
+		.event-name {
+			opacity: .75;
+			text-decoration: line-through;
+		}
+	}
+}
+
 .date {
 	position: absolute;
 	top: $marge*2;
@@ -269,9 +288,18 @@ body,
 
 .event-name {
 	@include h3;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
 
 	&:first-letter {
 		text-transform: uppercase;
+	}
+
+	svg {
+		position: relative;
+		top: -1px;
+		margin-right: $marge;
 	}
 }
 

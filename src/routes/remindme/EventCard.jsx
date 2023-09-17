@@ -1,4 +1,4 @@
-import { IoPencil, IoTrash } from 'react-icons/io5'
+import { IoPencil, IoTrash, IoSquareOutline, IoCheckboxOutline } from 'react-icons/io5'
 import { motion } from 'framer-motion';
 
 import { getTimeFromTimestamp } from '../../helpers/formatDates';
@@ -6,6 +6,7 @@ import deleteEvent from '../../usecases/deleteEvent'
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import toastState from '../../atoms/toastState'
 import editEventState from '../../atoms/editEventState';
+import updateEvent from '../../usecases/updateEvent';
 
 function EventCard({ event, animationDelay }) {
 
@@ -33,16 +34,24 @@ function EventCard({ event, animationDelay }) {
         setEditEvent(event)
     }
 
+    const toggleDone = () => {
+        const alterEvent = { ...event }
+        alterEvent.done = !alterEvent.done
+        updateEvent(alterEvent)
+    }
+
     return (
         <motion.div
-            className="card event"
+            className={`card event ${event?.done && 'done'}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ type: "tween", delay: (animationDelay / 10) + .25, duration: .5, ease: 'backIn' }}
         >
 
             <div className="event-header">
-                <p className="event-name">{event?.name}</p>
+                <p className="event-name" onClick={toggleDone}>
+                    {event?.done ? <IoCheckboxOutline /> : <IoSquareOutline />} {event?.name}
+                </p>
                 <p className="event-time">{getTimeFromTimestamp(event?.timestamp)}</p>
             </div>
 

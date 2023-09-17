@@ -1,6 +1,4 @@
 import { NavLink } from "react-router-dom";
-import gmailIcon from '../../assets/gmail_icon.png'
-import gdriveIcon from '../../assets/gdrive_icon.png'
 
 function Header() {
     return (
@@ -24,22 +22,10 @@ function Header() {
                         <li className="menu-item">
                             <NavLink to="/hireme">Hire.me</NavLink>
                         </li>
+                        <li className="menu-item">
+                            <NavLink to="/contactme">Contact.me</NavLink>
+                        </li>
                     </ul>
-
-                    <div id="external-links">
-
-                        <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank" rel="noreferrer">
-                            <img src={gmailIcon} alt="logo gmail" />
-                        </a>
-
-                        <a href="https://drive.google.com/drive/u/0/folders/0BxrDsls4aULHZVJVeUdxd0M3aEE?resourcekey=0-oqak2kKy48EbW1F6tDGAiw" target="_blank" rel="noreferrer">
-                            <img src={gdriveIcon} alt="logo gmail" />
-                        </a>
-
-
-
-
-                    </div>
 
                 </div>
 
