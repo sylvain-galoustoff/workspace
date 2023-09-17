@@ -14,7 +14,6 @@ const deleteEvent = async (timestampNoTime, eventId) => {
         await deleteDoc(docRef)
     }
 
-
 }
 
 export default deleteEvent

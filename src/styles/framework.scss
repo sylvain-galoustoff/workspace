@@ -48,11 +48,35 @@ a {
     width: 450px;
 }
 
+/* CARDS */
+.cards-group {
+    border-top: 1px solid $accent;
+    padding-top: $marge*2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.cards-list-title {
+    position: absolute;
+    top: $marge*2;
+    left: 0;
+
+    &::first-letter {
+        text-transform: uppercase;
+    }
+}
+
 .card {
     @include card;
 }
 
 /* FORMS */
+.form-title {
+    margin-bottom: $marge*3;
+}
+
 .form-group {
     // @include dev;
     margin-bottom: $marge*3;

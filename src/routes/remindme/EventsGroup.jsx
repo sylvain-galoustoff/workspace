@@ -5,7 +5,7 @@ import { getFullDateStringFromTimestamp } from "../../helpers/formatDates";
 
 import EventCard from "./EventCard";
 
-function EventsOfTheDay({ events, motionKey }) {
+function EventsGroup({ events, motionKey }) {
 
     const [timestamp, setTimestamp] = useState('')
 
@@ -19,16 +19,16 @@ function EventsOfTheDay({ events, motionKey }) {
 
     return (
         <motion.div
-            className="events-list"
+            className="cards-group"
             key={motionKey}
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ type: "tween", duration: .5, ease: 'backIn', when: 'beforeChildren', delay: motionKey / 10 }}
         >
-            <h3 className="date">{timestamp && getFullDateStringFromTimestamp(timestamp)}</h3>
+            <h3 className="cards-list-title">{timestamp && getFullDateStringFromTimestamp(timestamp)}</h3>
             {renderEvents}
         </motion.div>
     );
 }
 
-export default EventsOfTheDay
+export default EventsGroup

@@ -1,14 +1,27 @@
+import AddContactForm from "./AddContactForm";
+import ContactsGroup from "./ContactsGroup";
 
 function RemindMe() {
 
     return (
-        <div className="page" id="remind-me">
+        <div className="page" id="contact-me">
+            <div className="container" id="contact-me-container">
 
-            <div className="container" id="remind-me-container">
-                contact.me
+                <div id="contacts-list">
+                    <div className="card-list">
+
+                        <ContactsGroup />
+                        <ContactsGroup />
+
+                    </div>
+                </div>
+
+                <AddContactForm />
+
             </div>
         </div>
     );
+
 }
 
 export default RemindMe

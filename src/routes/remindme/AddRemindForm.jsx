@@ -52,6 +52,18 @@ function AddRemindForm() {
         setForm(newForm)
     }
 
+    const resetForm = () => {
+        setForm({
+            editMode: false,
+            id: null,
+            name: '',
+            timestamp: null,
+            calendar: '',
+            note: ''
+        })
+        setStartDate(null)
+    }
+
     const selectNewCalendar = newCalendar => {
         const newForm = { ...form }
         newForm.calendar = newCalendar
@@ -125,18 +137,6 @@ function AddRemindForm() {
             .catch(err => console.error(err))
     }
 
-    const resetForm = () => {
-        setForm({
-            editMode: false,
-            id: null,
-            name: '',
-            timestamp: null,
-            calendar: '',
-            note: ''
-        })
-        setStartDate(null)
-    }
-
     const closeModal = () => {
         const newForm = { ...form }
         newForm.calendar = ''
@@ -154,8 +154,8 @@ function AddRemindForm() {
         >
 
             {form.editMode === false
-                ? <h2 id="add-reminder-title">Ajouter un rappel</h2>
-                : <h2 id="add-reminder-title">Mettre à jour un rappel</h2>
+                ? <h2 className="form-title">Ajouter un rappel</h2>
+                : <h2 className="form-title">Mettre à jour un rappel</h2>
             }
 
             <div className="form-group">
