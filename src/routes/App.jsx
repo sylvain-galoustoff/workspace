@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import RemindMe from "./remindme/RemindMe"
 import Header from "../components/header/Header"
 import Toaster from "../components/toasts/Toaster"
+import RemindMe from "./remindme/RemindMe"
+import ContactMe from "./contactme/ContactMe"
 
 function App() {
 	return (
@@ -12,6 +13,7 @@ function App() {
 
 				<Routes>
 					<Route path="/" element={<RemindMe />} />
+					<Route path="/contactme" element={<ContactMe />} />
 				</Routes>
 
 				<Toaster />
