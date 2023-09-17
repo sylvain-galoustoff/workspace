@@ -1,7 +1,10 @@
+import { useState } from "react";
 import AddContactForm from "./AddContactForm";
 import ContactsGroup from "./ContactsGroup";
 
 function RemindMe() {
+
+    const [contacts, setContacts] = useState([])
 
     return (
         <div className="page" id="contact-me">

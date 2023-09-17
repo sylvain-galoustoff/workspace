@@ -8,8 +8,12 @@ const storeContact = async contact => {
         contact.id = contactId
     }
 
-    const docRef = doc(db, 'contacts', contactId.toString())
-    setDoc(docRef, contact, { merge: true })
+    const contactForDb = {
+        [contactId]: contact
+    }
+
+    const docRef = doc(db, 'contacts', contact.company)
+    setDoc(docRef, contactForDb, { merge: true })
         .catch(err => console.error(err))
 
 }
