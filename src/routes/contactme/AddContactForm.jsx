@@ -1,8 +1,14 @@
 import { useState } from "react";
 import { IoSave, IoArrowUndo } from 'react-icons/io5'
 
+import storeContact from '../../usecases/contacts/storeContact'
+
+import { useRecoilState } from "recoil";
+import toastState from "../../atoms/toastState"
+
 function AddContactForm() {
 
+    const [toasts, setToasts] = useRecoilState(toastState)
     const [form, setForm] = useState({
         editMode: false,
         company: '',
@@ -20,18 +26,41 @@ function AddContactForm() {
     const resetForm = () => {
         setForm({
             editMode: false,
-            id: null,
-            name: '',
-            timestamp: null,
-            calendar: '',
-            note: ''
+            company: '',
+            fullName: '',
+            tel: '',
+            email: '',
         })
+    }
+
+    const submitContact = e => {
+        e.preventDefault()
+
+        const inProgressToast = {
+            type: "primary",
+            message: "Enregistrement en cours..."
+        }
+        setToasts([...toasts, inProgressToast])
+
+        const submitForm = { ...form }
+        delete submitForm.editMode
+        storeContact(submitForm)
+            .then(() => {
+                const successToast = {
+                    type: "success",
+                    message: `Contact ${submitForm.fullName} enregistré.`,
+                }
+                setToasts([...toasts, inProgressToast, successToast])
+                resetForm()
+            })
+
     }
 
     return (
         <form
             className="right-part"
             id="add-contact"
+            onSubmit={submitContact}
         >
 
             {form.editMode === false

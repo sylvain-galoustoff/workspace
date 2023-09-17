@@ -66,11 +66,10 @@ body,
 #app-menu {
 	width: 100%;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
 }
 
 .menu-item {
-	margin-left: $marge*2;
 	@include h3;
 
 	a {

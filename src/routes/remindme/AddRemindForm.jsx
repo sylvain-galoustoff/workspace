@@ -84,15 +84,7 @@ function AddRemindForm() {
 
         storeEvent(newForm)
             .then(() => {
-                setForm({
-                    editMode: false,
-                    id: null,
-                    name: '',
-                    timestamp: null,
-                    calendar: '',
-                    note: ''
-                })
-                setStartDate(null)
+                resetForm()
                 const successToast = {
                     type: "success",
                     message: `événement "${newForm.name}" enregistré !`
