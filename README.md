@@ -1,8 +1,15 @@
-# React + Vite
+# WorkSpace
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Cette application est un outil pour la gestion de mon activité freelance.  
+Il contient plusieurs "sous-app" :  
+- Remind.me : liste de tâche organisées par date  
+- Pay.me : édition des devis / factures  
+- Hire.me : suivi de prospection de mission
+- Contact.me : répertoire de contacts professionels
 
-Currently, two official plugins are available:
+## Technos
+Front-end : React  
+Back-end : Firebase / Firestore  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Démo :
+Non-disponible (application en cours de développement)

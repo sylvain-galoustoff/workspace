@@ -5,8 +5,6 @@ import EventsOfTheDay from "./EventsOfTheDay";
 import AddRemindForm from "./AddRemindForm";
 import Loader from "../../components/loader/Loader";
 import { AnimatePresence } from "framer-motion";
-import ToolBar from "../../components/toolbar/ToolBar";
-import RemindTools from "./RemindTools";
 
 function RemindMe() {
 
@@ -24,10 +22,6 @@ function RemindMe() {
 
     return (
         <div className="page" id="remind-me">
-
-            <ToolBar>
-                <RemindTools />
-            </ToolBar>
 
             <div className="container" id="remind-me-container">
 
