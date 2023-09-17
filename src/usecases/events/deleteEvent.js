@@ -1,4 +1,4 @@
-import { db } from '../firebase'
+import { db } from '../../firebase'
 import { deleteDoc, deleteField, doc, getDoc, setDoc } from "firebase/firestore";
 
 const deleteEvent = async (timestampNoTime, eventId) => {

@@ -229,6 +229,7 @@ body,
 }
 
 #reminders-list {
+	// @include dev;
 	flex: 1;
 	height: 100%;
 	overflow-y: auto;

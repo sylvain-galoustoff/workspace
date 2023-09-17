@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import getAllEvents from '../../usecases/getAllEvents'
 
 function RemindMe() {
 

@@ -1,12 +1,14 @@
 import { IoPencil, IoTrash, IoSquareOutline, IoCheckboxOutline } from 'react-icons/io5'
 import { motion } from 'framer-motion';
 
-import { getTimeFromTimestamp } from '../../helpers/formatDates';
-import deleteEvent from '../../usecases/deleteEvent'
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import toastState from '../../atoms/toastState'
 import editEventState from '../../atoms/editEventState';
-import updateEvent from '../../usecases/updateEvent';
+
+import { getTimeFromTimestamp } from '../../helpers/formatDates';
+
+import deleteEvent from '../../usecases/events/deleteEvent'
+import updateEvent from '../../usecases/events/updateEvent';
 
 function EventCard({ event, animationDelay }) {
 

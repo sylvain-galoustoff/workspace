@@ -6,9 +6,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import fr from 'date-fns/locale/fr'
 registerLocale('fr', fr)
 
-import getAllCalendarNames from '../../usecases/getAllCalendarNames'
-import storeEvent from "../../usecases/storeEvent";
-import updateEvent from "../../usecases/updateEvent";
+import getAllCalendarNames from '../../usecases/events/getAllCalendarNames'
+import storeEvent from "../../usecases/events/storeEvent";
+import updateEvent from "../../usecases/events/updateEvent";
 
 import Modal from "../../components/modals/Modal";
 import AddCalendar from "./AddCalendar";

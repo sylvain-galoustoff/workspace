@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import getAllEvents from '../../usecases/getAllEvents'
+import getAllEvents from '../../usecases/events/getAllEvents'
 
 import EventsOfTheDay from "./EventsOfTheDay";
 import AddRemindForm from "./AddRemindForm";
