@@ -12,12 +12,12 @@ function ContactCard({ contact, animationDelay }) {
         >
 
             <p className="contact-name">
-                Contact Fullname
+                {contact?.fullName}
             </p>
 
             <div className="contact-body">
-                <p className="contact-tel"><IoCall /> 06.10.11.12.13</p>
-                <p className="contact-mail"><IoMail />nom.prenom@email.com</p>
+                <p className="contact-tel"><IoCall />{contact?.tel}</p>
+                <p className="contact-mail"><IoMail />{contact?.email}</p>
             </div>
 
             <div className="contact-actions">
