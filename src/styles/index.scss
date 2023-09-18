@@ -221,6 +221,36 @@ body,
 	}
 }
 
+/* SOCIAL LINKS */
+#social-links {
+	position: fixed;
+	z-index: 1000;
+	top: 50%;
+	left: 0;
+	font-size: 2rem;
+}
+
+#social-link-wrapper {
+	transform: translateY(-50%);
+	background-color: $grey1;
+	border-top-right-radius: $corner;
+	border-bottom-right-radius: $corner;
+	display: flex;
+	flex-direction: column;
+}
+
+.social-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: $marge;
+	@include trans;
+
+	&:hover {
+		color: $accent;
+	}
+}
+
 /* REMIND.ME */
 #remind-me-container {
 	// @include dev;
