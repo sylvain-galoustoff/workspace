@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { IoClose, IoSave } from 'react-icons/io5'
-import storeCalendar from '../../usecases/storeCalendar';
+import storeCalendar from '../../usecases/events/storeCalendar';
 import { useRecoilState } from 'recoil';
 import ToastState from '../../atoms/toastState'
 

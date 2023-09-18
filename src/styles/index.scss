@@ -66,11 +66,10 @@ body,
 #app-menu {
 	width: 100%;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
 }
 
 .menu-item {
-	margin-left: $marge*2;
 	@include h3;
 
 	a {
@@ -252,28 +251,22 @@ body,
 }
 
 /* REMIND.ME */
-#remind-me-container {
+#remind-me-container,
+#contact-me-container {
 	// @include dev;
 	padding-top: $marge*5;
 	display: flex;
 }
 
-#reminders-list {
+#reminders-list,
+#contacts-list {
+	// @include dev;
 	flex: 1;
 	height: 100%;
 	overflow-y: auto;
 	padding-right: $marge*2;
 	margin-right: $marge*10;
 	position: relative;
-}
-
-.events-list {
-	border-top: 1px solid $accent;
-	padding-top: $marge*2;
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
 }
 
 .event {
@@ -293,17 +286,8 @@ body,
 	}
 }
 
-.date {
-	position: absolute;
-	top: $marge*2;
-	left: 0;
-
-	&::first-letter {
-		text-transform: uppercase;
-	}
-}
-
-.event {
+.event,
+.contact {
 	margin-bottom: $marge*2;
 	position: relative;
 	width: 50%;
@@ -347,7 +331,8 @@ body,
 	padding-top: 0;
 }
 
-.event-actions {
+.event-actions,
+.contact-actions {
 	position: absolute;
 	bottom: $marge*2;
 	right: $marge*2;
@@ -355,7 +340,9 @@ body,
 }
 
 .event-edit,
-.event-delete {
+.event-delete,
+.contact-edit,
+.contact-delete {
 	opacity: .75;
 	cursor: pointer;
 	@include trans;
@@ -366,7 +353,8 @@ body,
 	}
 }
 
-.event-delete {
+.event-delete,
+.contact-delete {
 	margin-left: $marge;
 }
 
@@ -380,10 +368,6 @@ body,
 		opacity: 1;
 	}
 
-}
-
-#add-reminder-title {
-	margin-bottom: $marge*3;
 }
 
 .react-datepicker {
@@ -406,4 +390,28 @@ body,
 
 .react-datepicker__day--keyboard-selected {
 	background-color: $grey1;
+}
+
+/* CONTACT.ME */
+.contact-name {
+	@include h2;
+	padding: $marge*2;
+}
+
+.contact-body {
+	padding: 0 $marge*2 $marge*2 $marge*2;
+}
+
+.contact-tel,
+.contact-mail {
+	display: flex;
+	align-items: center;
+
+	svg {
+		margin-right: $marge;
+	}
+}
+
+.contact-tel {
+	margin-bottom: $marge;
 }

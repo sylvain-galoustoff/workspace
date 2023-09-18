@@ -6,9 +6,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import fr from 'date-fns/locale/fr'
 registerLocale('fr', fr)
 
-import getAllCalendarNames from '../../usecases/getAllCalendarNames'
-import storeEvent from "../../usecases/storeEvent";
-import updateEvent from "../../usecases/updateEvent";
+import getAllCalendarNames from '../../usecases/events/getAllCalendarNames'
+import storeEvent from "../../usecases/events/storeEvent";
+import updateEvent from "../../usecases/events/updateEvent";
 
 import Modal from "../../components/modals/Modal";
 import AddCalendar from "./AddCalendar";
@@ -52,6 +52,18 @@ function AddRemindForm() {
         setForm(newForm)
     }
 
+    const resetForm = () => {
+        setForm({
+            editMode: false,
+            id: null,
+            name: '',
+            timestamp: null,
+            calendar: '',
+            note: ''
+        })
+        setStartDate(null)
+    }
+
     const selectNewCalendar = newCalendar => {
         const newForm = { ...form }
         newForm.calendar = newCalendar
@@ -72,15 +84,7 @@ function AddRemindForm() {
 
         storeEvent(newForm)
             .then(() => {
-                setForm({
-                    editMode: false,
-                    id: null,
-                    name: '',
-                    timestamp: null,
-                    calendar: '',
-                    note: ''
-                })
-                setStartDate(null)
+                resetForm()
                 const successToast = {
                     type: "success",
                     message: `événement "${newForm.name}" enregistré !`
@@ -125,18 +129,6 @@ function AddRemindForm() {
             .catch(err => console.error(err))
     }
 
-    const resetForm = () => {
-        setForm({
-            editMode: false,
-            id: null,
-            name: '',
-            timestamp: null,
-            calendar: '',
-            note: ''
-        })
-        setStartDate(null)
-    }
-
     const closeModal = () => {
         const newForm = { ...form }
         newForm.calendar = ''
@@ -154,8 +146,8 @@ function AddRemindForm() {
         >
 
             {form.editMode === false
-                ? <h2 id="add-reminder-title">Ajouter un rappel</h2>
-                : <h2 id="add-reminder-title">Mettre à jour un rappel</h2>
+                ? <h2 className="form-title">Ajouter un rappel</h2>
+                : <h2 className="form-title">Mettre à jour un rappel</h2>
             }
 
             <div className="form-group">

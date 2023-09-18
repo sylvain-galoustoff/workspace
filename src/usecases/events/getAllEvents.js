@@ -1,5 +1,5 @@
-import { db } from '../firebase'
 import { collection, onSnapshot } from "firebase/firestore";
+import { db } from '../../firebase'
 
 const getAllEvents = callback => {
 
@@ -9,12 +9,12 @@ const getAllEvents = callback => {
         let events = []
         snapshot.forEach(doc => {
             const docData = Object.values(doc.data())
-            // if (doc.id > now) {
-            docData.sort((a, b) => {
-                return a.timestamp - b.timestamp
-            })
-            events.push(docData)
-            // }
+            if (doc.id > now) {
+                docData.sort((a, b) => {
+                    return a.timestamp - b.timestamp
+                })
+                events.push(docData)
+            }
         })
         callback(events)
     })

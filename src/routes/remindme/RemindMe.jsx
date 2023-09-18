@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import getAllEvents from '../../usecases/getAllEvents'
+import getAllEvents from '../../usecases/events/getAllEvents'
 
-import EventsOfTheDay from "./EventsOfTheDay";
+import EventsGroup from "./EventsGroup";
 import AddRemindForm from "./AddRemindForm";
 import Loader from "../../components/loader/Loader";
 import { AnimatePresence } from "framer-motion";
@@ -17,19 +17,18 @@ function RemindMe() {
         return () => unsubscribe()
     }, [])
 
-    const renderEventsByDate = Object.keys(events)
-        .map(key => <EventsOfTheDay key={key} events={events[key]} motionKey={key} />)
+    const renderEventsGroup = Object.keys(events)
+        .map(key => <EventsGroup key={key} events={events[key]} motionKey={key} />)
 
     return (
         <div className="page" id="remind-me">
-
             <div className="container" id="remind-me-container">
 
                 <div id="reminders-list">
                     <AnimatePresence>
                         {events.length === 0
                             ? <Loader />
-                            : renderEventsByDate
+                            : renderEventsGroup
                         }
                     </AnimatePresence>
                 </div>
