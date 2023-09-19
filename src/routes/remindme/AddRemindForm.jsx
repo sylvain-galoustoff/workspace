@@ -151,7 +151,7 @@ function AddRemindForm() {
             }
 
             <div className="form-group">
-                <label htmlFor="input-event-name">Nom de l'événement</label>
+                <label htmlFor="input-event-name">Nom de l&apos;événement</label>
                 <input
                     type="text"
                     id="input-event-name"
@@ -162,7 +162,7 @@ function AddRemindForm() {
             </div>
 
             <div className="form-group">
-                <label htmlFor="input-event-date">Date l'événement</label>
+                <label htmlFor="input-event-date">Date l&apos;événement</label>
                 <DatePicker
                     id="input-event-date"
                     autoComplete="off"
