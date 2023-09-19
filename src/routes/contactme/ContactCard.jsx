@@ -1,7 +1,17 @@
 import { motion } from 'framer-motion'
 import { IoCall, IoMail, IoPencil, IoTrash } from 'react-icons/io5'
+import { useRecoilState } from 'recoil';
+import editContactState from '../../atoms/editContactState';
 
 function ContactCard({ contact, animationDelay }) {
+
+    const [contactForm, setContactForm] = useRecoilState(editContactState)
+
+    const editContact = () => {
+        const editContact = { ...contact }
+        editContact.editMode = true
+        setContactForm(editContact)
+    }
 
     return (
         <motion.div
@@ -21,7 +31,7 @@ function ContactCard({ contact, animationDelay }) {
             </div>
 
             <div className="contact-actions">
-                <div className="contact-edit">
+                <div className="contact-edit" onClick={editContact}>
                     <IoPencil />
                 </div>
                 <div className="contact-delete">

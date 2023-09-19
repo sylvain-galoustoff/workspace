@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoSave, IoArrowUndo } from 'react-icons/io5'
 
 import storeContact from '../../usecases/contacts/storeContact'
 
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import toastState from "../../atoms/toastState"
+import editContactState from "../../atoms/editContactState";
 
 function AddContactForm() {
 
+    const editContact = useRecoilValue(editContactState)
     const [toasts, setToasts] = useRecoilState(toastState)
     const [form, setForm] = useState({
         editMode: false,
@@ -16,6 +18,12 @@ function AddContactForm() {
         tel: '',
         email: '',
     })
+
+    useEffect(() => {
+        if (editContact.editMode) {
+            setForm(editContact)
+        }
+    }, [setForm, editContact])
 
     const changeForm = (e, target) => {
         const newForm = { ...form }

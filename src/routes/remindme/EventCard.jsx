@@ -33,7 +33,9 @@ function EventCard({ event, animationDelay }) {
     }
 
     const editEvent = () => {
-        setEditEvent(event)
+        const editEvent = { ...event }
+        editEvent.editMode = true
+        setEditEvent(editEvent)
     }
 
     const toggleDone = () => {
