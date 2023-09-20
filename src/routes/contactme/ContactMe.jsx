@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+
+import Loader from '../../components/loader/Loader'
 import AddContactForm from "./AddContactForm";
 import ContactsGroup from "./ContactsGroup";
+
 import getAllContacts from "../../usecases/contacts/getAllContacts";
 
 function RemindMe() {
@@ -23,9 +26,11 @@ function RemindMe() {
 
                 <div id="contacts-list">
                     <div className="card-list">
-
-                        {renderContactsGroup}
-
+                        {
+                            contacts.length > 0
+                                ? renderContactsGroup
+                                : <Loader />
+                        }
                     </div>
                 </div>
 

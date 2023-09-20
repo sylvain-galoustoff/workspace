@@ -8,7 +8,6 @@ const getAllContacts = callback => {
         snapshot.forEach(doc => {
             contacts.push(Object.values(doc.data()))
         })
-        console.log(contacts);
         callback(contacts)
     })
 

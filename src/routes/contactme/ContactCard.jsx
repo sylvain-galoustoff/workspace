@@ -1,13 +1,16 @@
 import { motion } from 'framer-motion'
 import { IoCall, IoMail, IoPencil, IoTrash } from 'react-icons/io5'
+
 import { useRecoilState } from 'recoil';
 import editContactState from '../../atoms/editContactState';
+import toastState from '../../atoms/toastState';
 
 import deleteContact from '../../usecases/contacts/deleteContact'
 
 function ContactCard({ contact, animationDelay }) {
 
     const [contactForm, setContactForm] = useRecoilState(editContactState)
+    const [toasts, setToasts] = useRecoilState(toastState)
 
     const editContact = () => {
         const editContact = { ...contact }
@@ -16,7 +19,28 @@ function ContactCard({ contact, animationDelay }) {
     }
 
     const deleteThisContact = () => {
+        const deletingToast = {
+            type: "primary",
+            message: "Suppression en cours"
+        }
+        setToasts([...toasts, deletingToast])
+
         deleteContact(contact)
+            .then(() => {
+                setContactForm({
+                    editMode: false,
+                    company: '',
+                    fullName: '',
+                    tel: '',
+                    email: '',
+                })
+
+                const deletedToast = {
+                    type: "success",
+                    message: `Contact ${contact.fullName} supprimé.`
+                }
+                setToasts([...toasts, deletingToast, deletedToast])
+            })
     }
 
     return (
@@ -32,8 +56,8 @@ function ContactCard({ contact, animationDelay }) {
             </p>
 
             <div className="contact-body">
-                <p className="contact-tel"><IoCall />{contact?.tel}</p>
-                <p className="contact-mail"><IoMail />{contact?.email}</p>
+                {contact?.tel && <p className="contact-tel"><IoCall />{contact?.tel}</p>}
+                {contact?.email && <p className="contact-mail"><IoMail />{contact?.email}</p>}
             </div>
 
             <div className="contact-actions">
